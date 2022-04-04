@@ -47,10 +47,10 @@ void ExaLangRuntime::runCode(const char* line) const
 
 Value ExaLangRuntime::read(ExaStack& stack, Value* value) const
 {
+	char c = *static_cast<const char*>(value->value);
 	switch (value->type)
 	{
 	case Register:
-		char c = *static_cast<const char*>(value->value);
 		c = std::toupper(c);
 		if (c == 'M')
 			return *M;
