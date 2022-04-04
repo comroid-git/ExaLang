@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\dev\antlr4-cpp-runtime-4.9.3-source\runtime\src;$(IncludePath)</IncludePath>
+    <IncludePath>C:\dev\antlr4\runtime\Cpp\runtime\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -164,11 +164,6 @@
     <ClCompile Include="ValueRegister.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\antlr4-cpp-runtime-4.9.3-source\runtime\antlr4cpp-vs2019.vcxproj">
-      <Project>{83be66cd-9c4f-4f84-b72a-dd1855c8fc8a}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="CodeVisitor.h" />
     <ClInclude Include="ExaLangRuntime.h" />
     <ClInclude Include="ExaStack.h" />
@@ -180,6 +175,11 @@
     <ClInclude Include="ValueBase.h" />
     <ClInclude Include="ValueLiteral.h" />
     <ClInclude Include="ValueRegister.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\antlr4\runtime\Cpp\runtime\antlr4cpp-vs2019.vcxproj">
+      <Project>{83be66cd-9c4f-4f84-b72a-dd1855c8fc8a}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

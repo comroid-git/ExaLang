@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExaLang", "ExaLang\ExaLang.vcxproj", "{AAD3797B-080A-45F4-B18C-BAB14C586B4C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "antlr4cpp-vs2019", "..\antlr4-cpp-runtime-4.9.3-source\runtime\antlr4cpp-vs2019.vcxproj", "{83BE66CD-9C4F-4F84-B72A-DD1855C8FC8A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "antlr4cpp-vs2019", "..\antlr4\runtime\Cpp\runtime\antlr4cpp-vs2019.vcxproj", "{83BE66CD-9C4F-4F84-B72A-DD1855C8FC8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
