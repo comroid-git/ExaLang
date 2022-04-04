@@ -22,6 +22,7 @@ antlrcpp::Any CodeVisitor::visitStmtBlank(ExaLangParser::StmtBlankContext* ctx)
 	case ExaLangLexer::NOOP: break;
 	default: break;
 	}
+	return NULL;
 }
 
 antlrcpp::Any CodeVisitor::visitStmtUnary(ExaLangParser::StmtUnaryContext* ctx)
