@@ -141,17 +141,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ExaLang.cpp" />
-    <ClCompile Include="antlr_generated/ExaLangBaseListener.h" />
     <ClCompile Include="antlr_generated/ExaLangBaseListener.cpp" />
-    <ClCompile Include="antlr_generated/ExaLangBaseVisitor.h" />
     <ClCompile Include="antlr_generated/ExaLangBaseVisitor.cpp" />
-    <ClCompile Include="antlr_generated/ExaLangLexer.h" />
     <ClCompile Include="antlr_generated/ExaLangLexer.cpp" />
-    <ClCompile Include="antlr_generated/ExaLangListener.h" />
     <ClCompile Include="antlr_generated/ExaLangListener.cpp" />
-    <ClCompile Include="antlr_generated/ExaLangParser.h" />
     <ClCompile Include="antlr_generated/ExaLangParser.cpp" />
-    <ClCompile Include="antlr_generated/ExaLangVisitor.h" />
     <ClCompile Include="antlr_generated/ExaLangVisitor.cpp" />
     <ClCompile Include="CodeVisitor.cpp" />
     <ClCompile Include="ExaLangRuntime.cpp" />
@@ -160,6 +154,12 @@
     <ClCompile Include="ValueRegister.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="antlr_generated/ExaLangBaseListener.h" />
+    <ClCompile Include="antlr_generated/ExaLangBaseVisitor.h" />
+    <ClCompile Include="antlr_generated/ExaLangLexer.h" />
+    <ClCompile Include="antlr_generated/ExaLangListener.h" />
+    <ClCompile Include="antlr_generated/ExaLangParser.h" />
+    <ClCompile Include="antlr_generated/ExaLangVisitor.h" />
     <ClInclude Include="CodeVisitor.h" />
     <ClInclude Include="ExaLangRuntime.h" />
     <ClInclude Include="ExaStack.h" />
