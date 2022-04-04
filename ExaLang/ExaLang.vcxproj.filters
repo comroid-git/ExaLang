@@ -104,5 +104,8 @@
     <ClInclude Include="ExaStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StatementSpecial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -166,6 +166,7 @@
     <ClInclude Include="StatementBase.h" />
     <ClInclude Include="StatementBinary.h" />
     <ClInclude Include="StatementBlank.h" />
+    <ClInclude Include="StatementSpecial.h" />
     <ClInclude Include="StatementTrinary.h" />
     <ClInclude Include="StatementUnary.h" />
     <ClInclude Include="ValueBase.h" />

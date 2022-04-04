@@ -1,15 +1,16 @@
 #pragma once
 
-#include <stdio.h>
-
 #include "ValueBase.h"
 
 class ExaStack
 {
 public:
-	Value* X;
-	Value* T;
-	FILE* F;
-	Value* M;
+	const std::map<const char, Value*> regs;
+
+	explicit ExaStack(): regs(std::map<const char, Value*>())
+	{
+	}
+
+	Value* read(const char);
 };
 

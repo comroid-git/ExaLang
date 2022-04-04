@@ -39,8 +39,29 @@ void ExaLangRuntime::runCode(const char* line) const
 	const auto tokens = new antlr4::CommonTokenStream(lexer);
 	const auto parser = new ExaLangParser(tokens);
 	const auto visitor = new CodeVisitor();
-	std::vector<StatementBase> code = visitor->visit(parser->file()).as<std::vector<StatementBase>>();
+	const std::vector<StatementBase> code = visitor->visit(parser->file()).as<std::vector<StatementBase>>();
 	const auto stack = new ExaStack();
 	for (auto stmt : code)
 		stmt.evaluate(*this, *stack);
+}
+
+Value ExaLangRuntime::read(ExaStack& stack, Value* value) const
+{
+	switch (value->type)
+	{
+	case Register:
+		char c = *static_cast<const char*>(value->value);
+		c = std::toupper(c);
+		if (c == 'M')
+			return *M;
+		return *stack.read(c);
+	case LiteralNum:
+	case LiteralStr:
+		return *value;
+	case MRD:
+		return *M;
+	case Eof:
+		break;
+	}
+	throw std::exception("invalid state");
 }

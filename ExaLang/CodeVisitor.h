@@ -12,6 +12,8 @@ public:
 	antlrcpp::Any visitTestCompare(ExaLangParser::TestCompareContext* ctx) override;
 	antlrcpp::Any visitTestMrd(ExaLangParser::TestMrdContext* ctx) override;
 	antlrcpp::Any visitTestEof(ExaLangParser::TestEofContext* ctx) override;
-	antlrcpp::Any visitVar(ExaLangParser::VarContext* ctx) override;
+	antlrcpp::Any visitVarReg(ExaLangParser::VarRegContext* context) override;
+	antlrcpp::Any visitVarNum(ExaLangParser::VarNumContext* context) override;
+	antlrcpp::Any visitVarStr(ExaLangParser::VarStrContext* context) override;
 };
 

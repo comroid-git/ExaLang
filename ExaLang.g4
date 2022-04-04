@@ -52,9 +52,9 @@ stmtSpecial
     ;
 
 var
-    : LETTER
-    | NUMLIT
-    | STRLIT
+    : LETTER    #varReg
+    | NUMLIT    #varNum
+    | STRLIT    #varStr
     ;
 
 // manipulating values

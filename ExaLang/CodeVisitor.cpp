@@ -1,6 +1,7 @@
 #include "CodeVisitor.h"
 
 #include "StatementBase.h"
+#include "StatementSpecial.h"
 #include "antlr_generated/ExaLangLexer.h"
 
 antlrcpp::Any CodeVisitor::visitFile(ExaLangParser::FileContext* ctx)
@@ -78,8 +79,8 @@ antlrcpp::Any CodeVisitor::visitStmtTrinary(ExaLangParser::StmtTrinaryContext* c
 
 antlrcpp::Any CodeVisitor::visitTestCompare(ExaLangParser::TestCompareContext* ctx)
 {
-	auto left = visit(ctx->var(0));
-	auto right = visit(ctx->var(1));
+	Value* left = visit(ctx->var(0)).as<Value*>();
+	Value* right = visit(ctx->var(1)).as<Value*>();
 	int op;
 	switch (ctx->COMP_OP()->getSymbol()->getType())
 	{
@@ -89,20 +90,39 @@ antlrcpp::Any CodeVisitor::visitTestCompare(ExaLangParser::TestCompareContext* c
 	case ExaLangLexer::GREATER: op = 3; break;
 	default: throw std::exception(std::string("Invalid operator: " + ctx->COMP_OP()->getText()).c_str());
 	}
-	// todo: Return Statement
+	return StatementTestOp(left, right, op);
 }
 
 antlrcpp::Any CodeVisitor::visitTestMrd(ExaLangParser::TestMrdContext* ctx)
 {
-	// todo: Return Statement
+	Value* value = new Value(MRD, nullptr);
+	return value;
 }
 
 antlrcpp::Any CodeVisitor::visitTestEof(ExaLangParser::TestEofContext* ctx)
 {
-	// todo: Return Statement
+	Value* value = new Value(Eof, nullptr);
+	return value;
 }
 
-antlrcpp::Any CodeVisitor::visitVar(ExaLangParser::VarContext* ctx)
+antlrcpp::Any CodeVisitor::visitVarReg(ExaLangParser::VarRegContext* context)
 {
-	// todo: Return Statement
+	char reg = context->start->getText()[0];
+	Value* value = new Value(Register, &reg);
+	return value;
+}
+
+antlrcpp::Any CodeVisitor::visitVarNum(ExaLangParser::VarNumContext* context)
+{
+	double num = atof(context->start->getText().c_str());
+	Value* value = new Value(LiteralNum, &num);
+	return value;
+}
+
+antlrcpp::Any CodeVisitor::visitVarStr(ExaLangParser::VarStrContext* context)
+{
+	std::string str = context->start->getText();
+	str = str.substr(1, str.length() - 2);
+	Value* value = new Value(LiteralStr, &str);
+	return value;
 }
