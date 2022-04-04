@@ -57,18 +57,6 @@
     <ClCompile Include="CodeVisitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StatementBlank.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StatementUnary.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StatementBinary.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StatementTrinary.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ValueRegister.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

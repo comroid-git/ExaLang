@@ -156,10 +156,6 @@
     <ClCompile Include="CodeVisitor.cpp" />
     <ClCompile Include="ExaLangRuntime.cpp" />
     <ClCompile Include="ExaStack.cpp" />
-    <ClCompile Include="StatementBinary.cpp" />
-    <ClCompile Include="StatementBlank.cpp" />
-    <ClCompile Include="StatementTrinary.cpp" />
-    <ClCompile Include="StatementUnary.cpp" />
     <ClCompile Include="ValueLiteral.cpp" />
     <ClCompile Include="ValueRegister.cpp" />
   </ItemGroup>
