@@ -46,9 +46,9 @@ stmtTrinary
     | MODI
     ;
 stmtSpecial
-    : TEST var COMP_OP var
-    | TEST MRD
-    | TEST F_END
+    : TEST var COMP_OP var  #testCompare
+    | TEST MRD              #testMrd
+    | TEST F_END            #testEof
     ;
 
 var
