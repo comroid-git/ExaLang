@@ -153,11 +153,33 @@
     <ClCompile Include="antlr_generated/ExaLangParser.cpp" />
     <ClCompile Include="antlr_generated/ExaLangVisitor.h" />
     <ClCompile Include="antlr_generated/ExaLangVisitor.cpp" />
+    <ClCompile Include="CodeVisitor.cpp" />
+    <ClCompile Include="ExaLangRuntime.cpp" />
+    <ClCompile Include="ExaStack.cpp" />
+    <ClCompile Include="StatementBinary.cpp" />
+    <ClCompile Include="StatementBlank.cpp" />
+    <ClCompile Include="StatementTrinary.cpp" />
+    <ClCompile Include="StatementUnary.cpp" />
+    <ClCompile Include="ValueLiteral.cpp" />
+    <ClCompile Include="ValueRegister.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\antlr4-cpp-runtime-4.9.3-source\runtime\antlr4cpp-vs2019.vcxproj">
       <Project>{83be66cd-9c4f-4f84-b72a-dd1855c8fc8a}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CodeVisitor.h" />
+    <ClInclude Include="ExaLangRuntime.h" />
+    <ClInclude Include="ExaStack.h" />
+    <ClInclude Include="StatementBase.h" />
+    <ClInclude Include="StatementBinary.h" />
+    <ClInclude Include="StatementBlank.h" />
+    <ClInclude Include="StatementTrinary.h" />
+    <ClInclude Include="StatementUnary.h" />
+    <ClInclude Include="ValueBase.h" />
+    <ClInclude Include="ValueLiteral.h" />
+    <ClInclude Include="ValueRegister.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
