@@ -12,6 +12,8 @@ const std::map<std::string, Value> Value::cache = std::map<std::string, Value>()
 
 int main(int argc, char** args)
 {
+	std::cout << "In honor of Zachtronics" << std::endl;
+
 	const auto vm = ExaLangRuntime();
 
 	if (argc == 1)
