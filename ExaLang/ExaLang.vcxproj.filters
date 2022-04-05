@@ -57,12 +57,6 @@
     <ClCompile Include="CodeVisitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ValueRegister.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ValueLiteral.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ExaLangRuntime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -89,13 +83,7 @@
     <ClInclude Include="StatementTrinary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ValueBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ValueRegister.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ValueLiteral.h">
+    <ClInclude Include="Value.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ExaLangRuntime.h">

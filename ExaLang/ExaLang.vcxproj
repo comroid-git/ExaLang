@@ -150,8 +150,6 @@
     <ClCompile Include="CodeVisitor.cpp" />
     <ClCompile Include="ExaLangRuntime.cpp" />
     <ClCompile Include="ExaStack.cpp" />
-    <ClCompile Include="ValueLiteral.cpp" />
-    <ClCompile Include="ValueRegister.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="antlr_generated/ExaLangBaseListener.h" />
@@ -169,9 +167,7 @@
     <ClInclude Include="StatementSpecial.h" />
     <ClInclude Include="StatementTrinary.h" />
     <ClInclude Include="StatementUnary.h" />
-    <ClInclude Include="ValueBase.h" />
-    <ClInclude Include="ValueLiteral.h" />
-    <ClInclude Include="ValueRegister.h" />
+    <ClInclude Include="Value.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\antlr4\runtime\Cpp\runtime\antlr4cpp-vs2019.vcxproj">

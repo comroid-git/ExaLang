@@ -23,7 +23,3 @@ struct Value
 	{
 	}
 };
-
-struct ValueBase
-{
-};
