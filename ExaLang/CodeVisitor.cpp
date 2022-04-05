@@ -95,27 +95,27 @@ antlrcpp::Any CodeVisitor::visitTestCompare(ExaLangParser::TestCompareContext* c
 
 antlrcpp::Any CodeVisitor::visitTestMrd(ExaLangParser::TestMrdContext* ctx)
 {
-	Value* value = new Value(MRD, nullptr);
+	Value* value = Value::create(MRD, nullptr);
 	return value;
 }
 
 antlrcpp::Any CodeVisitor::visitTestEof(ExaLangParser::TestEofContext* ctx)
 {
-	Value* value = new Value(Eof, nullptr);
+	Value* value = Value::create(Eof, nullptr);
 	return value;
 }
 
 antlrcpp::Any CodeVisitor::visitVarReg(ExaLangParser::VarRegContext* context)
 {
 	char reg = context->start->getText()[0];
-	Value* value = new Value(Register, &reg);
+	Value* value = Value::create(Register, &reg);
 	return value;
 }
 
 antlrcpp::Any CodeVisitor::visitVarNum(ExaLangParser::VarNumContext* context)
 {
 	double num = atof(context->start->getText().c_str());
-	Value* value = new Value(LiteralNum, &num);
+	Value* value = Value::create(LiteralNum, &num);
 	return value;
 }
 
@@ -123,6 +123,6 @@ antlrcpp::Any CodeVisitor::visitVarStr(ExaLangParser::VarStrContext* context)
 {
 	std::string str = context->start->getText();
 	str = str.substr(1, str.length() - 2);
-	Value* value = new Value(LiteralStr, &str);
+	Value* value = Value::create(LiteralStr, &str);
 	return value;
 }

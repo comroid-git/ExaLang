@@ -61,7 +61,7 @@ Value ExaLangRuntime::read(ExaStack& stack, Value* value) const
 	case MRD:
 		return *M;
 	case Eof:
-		break;
+		return *stack.isEof();
 	}
 	throw std::exception("invalid state");
 }

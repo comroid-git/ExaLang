@@ -1,6 +1,6 @@
 #pragma once
 #include "ExaStack.h"
-#include "ValueBase.h"
+#include "Value.h"
 
 class ExaLangRuntime
 {

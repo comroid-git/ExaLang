@@ -4,11 +4,13 @@
 #include <iostream>
 
 #include "ExaLangRuntime.h"
-#include "ValueBase.h"
+#include "Value.h"
 #include "antlr_generated/ExaLangLexer.h"
 #include "antlr_generated/ExaLangParser.h"
 
-const std::map<std::string, Value> Value::cache = std::map<std::string, Value>();
+const std::map<std::string, Value*>* Value::cache = new std::map<std::string, Value*>();
+const Value* Value::Zero = Value::create(LiteralNum, reinterpret_cast<const void*>(0));
+const Value* Value::One = Value::create(LiteralNum, reinterpret_cast<const void*>(1));
 
 int main(int argc, char** args)
 {

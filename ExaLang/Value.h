@@ -13,7 +13,9 @@ enum ValueType
 
 struct Value
 {
-	static const std::map<std::string, Value> cache;
+	static const std::map<std::string, Value*>* cache;
+	static const Value* Zero;
+	static const Value* One;
 	const ValueType type;
 	const void* value;
 
@@ -21,5 +23,10 @@ struct Value
 		: type(type),
 		  value(value)
 	{
+	}
+
+	static Value* create(ValueType type, const void* value)
+	{
+		return new Value(type, value);
 	}
 };

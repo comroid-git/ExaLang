@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ValueBase.h"
+#include "Value.h"
 
 class ExaStack
 {
@@ -12,5 +12,7 @@ public:
 	}
 
 	Value* read(const char);
+	void write(const char, Value);
+	Value* isEof();
 };
 
