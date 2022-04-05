@@ -1,0 +1,11 @@
+NOTE print 'Hello, World!'
+COPY "Hello, World!" C
+
+NOTE print numbers 1 to 10
+COPY 1 X
+MARK print
+COPY X C
+TEST X > 10
+FJMP print
+
+HALT
