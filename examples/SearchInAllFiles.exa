@@ -1,0 +1,42 @@
+COPY args_1 query
+
+NOTE grab directories list of current dir
+MARK getDirsList
+GRAB dirs
+TEST EOF
+TJMP getFilesList
+FJMP gotoSubdirs
+
+MARK linkToSubdir
+LINK path
+JUMP getDirsList
+
+NOTE repl into all subdirs
+MARK gotoSubdirs
+COPY F path
+REPL linkToSubdir
+TEST EOF
+FJMP gotoSubdirs
+
+NOTE grab files list of current dir
+MARK getFilesList
+WIPE
+GRAB files
+TEST EOF
+FJMP gotoFiles
+HALT
+
+NOTE search for query in file
+MARK searchInFile
+GRAB path
+MARK search
+TEST F = query
+FJMP search
+HALT I
+
+NOTE spawn into all files
+MARK gotoFiles
+COPY F path
+REPL searchInFile
+TEST EOF
+FJMP gotoFiles
