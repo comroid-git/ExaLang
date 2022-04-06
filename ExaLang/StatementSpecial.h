@@ -40,6 +40,6 @@ public:
 			break;
 		}
 
-		stack.write('t', result ? *Value::Zero : *Value::One);
+		stack.write('t', result ? const_cast<Value*>(Value::Zero) : const_cast<Value*>(Value::One));
 	}
 };
