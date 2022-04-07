@@ -1,4 +1,5 @@
 #pragma once
+#include "CodeVisitor.h"
 #include "ExaStack.h"
 #include "Value.h"
 
@@ -15,6 +16,7 @@ public:
 		M = &value;
 	}
 
+	ExaLangParser makeParser(const char* line) const;
 	void stdIoMode() const;
 	void runFiles(char**) const;
 	void runFile(char*) const;

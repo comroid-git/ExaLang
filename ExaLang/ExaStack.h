@@ -15,8 +15,7 @@ public:
 	vector<StatementBase>* code;
 	int codeIndex;
 
-	void runCode(ExaLangRuntime, vector<StatementBase>*);
-
+	void runCode(const ExaLangRuntime*, vector<StatementBase>*);
 	Value* read(char);
 	void write(char, Value*);
 	Value* isEof();

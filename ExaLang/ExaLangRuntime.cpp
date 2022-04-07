@@ -13,20 +13,27 @@ using namespace std;
 
 void ExaLangRuntime::stdIoMode() const
 {
+	const auto stack = new ExaStack();
 	bool active = true;
-	auto stack = new ExaStack();
 	string code;
 	while (active)
 	{
-		cout << "exa @ " << filesystem::current_path() << ">";
+		cout << "exa@" << filesystem::current_path() << ">";
 		getline(cin, code);
-		this->runCode(code.c_str());
+
+		if (code == "exit")
+			active = false;
+
+		auto parser = makeParser(code.c_str());
+		auto binary = CodeVisitor().visit(parser.file()).as<vector<StatementBase>*>();
+
+		stack->runCode(this, binary);
 	}
 }
 
 void ExaLangRuntime::runFiles(char** args) const
 {
-	for (int i = 1; i < sizeof(args); i++)
+	for (int i = 1; sizeof args > i; i++)
 	{
 		thread([args, i, this]
 			{
@@ -44,16 +51,21 @@ void ExaLangRuntime::runFile(char* fname) const
 	this->runCode(buf.str().c_str());
 }
 
-void ExaLangRuntime::runCode(const char* line) const
+ExaLangParser ExaLangRuntime::makeParser(const char* line) const
 {
 	const auto input = new antlr4::ANTLRInputStream(line);
 	const auto lexer = new ExaLangLexer(input);
 	const auto tokens = new antlr4::CommonTokenStream(lexer);
-	const auto parser = new ExaLangParser(tokens);
-	const auto visitor = new CodeVisitor();
-	vector<StatementBase>* code = &visitor->visit(parser->file()).as<vector<StatementBase>>();
+	return ExaLangParser(tokens);
+}
+
+void ExaLangRuntime::runCode(const char* line) const
+{
+	auto parser = makeParser(line);
+	auto visitor = new CodeVisitor();
+	vector<StatementBase>* code = &visitor->visit(parser.file()).as<vector<StatementBase>>();
 	const auto stack = new ExaStack();
-	stack->runCode(code);
+	stack->runCode(this, code);
 }
 
 Value ExaLangRuntime::read(ExaStack& stack, Value* value) const
