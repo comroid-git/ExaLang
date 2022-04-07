@@ -1,7 +1,8 @@
 #pragma once
-#include "antlr_generated/ExaLangBaseVisitor.h"
+#include "ExaLangParserBaseVisitor.h"
+#include "tree/ParseTree.h"
 
-struct AbstractVisitor : ExaLangBaseVisitor
+struct AbstractVisitor : ExaLangParserBaseVisitor
 {
 protected:
 	bool shouldVisitNextChild(antlr4::tree::ParseTree*, const antlrcpp::Any& result) override;

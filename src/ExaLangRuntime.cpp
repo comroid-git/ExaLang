@@ -4,10 +4,10 @@
 #include <filesystem>
 
 #include "ANTLRInputStream.h"
-#include "CodeVisitor.h"
-#include "StatementBase.h"
-#include "antlr_generated/ExaLangLexer.h"
-#include "antlr_generated/ExaLangParser.h"
+#include "antlr/CodeVisitor.h"
+#include "stmt/StatementBase.h"
+#include "ExaLangLexer.h"
+#include "ExaLangParser.h"
 
 using namespace std;
 using namespace std::chrono;

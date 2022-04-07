@@ -1,6 +1,6 @@
 #include "ExaStack.h"
 
-#include "StatementBase.h"
+#include "stmt/StatementBase.h"
 
 void ExaStack::runCode(const ExaLangRuntime* vm, vector<StatementBase>* code)
 {

@@ -5,8 +5,8 @@
 
 #include "ExaLangRuntime.h"
 #include "Value.h"
-#include "antlr_generated/ExaLangLexer.h"
-#include "antlr_generated/ExaLangParser.h"
+#include "ExaLangLexer.h"
+#include "ExaLangParser.h"
 
 const std::map<std::string, Value*>* Value::cache = new std::map<std::string, Value*>();
 const Value* Value::Zero = Value::create(LiteralNum, reinterpret_cast<const void*>(0));

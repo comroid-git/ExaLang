@@ -1,8 +1,8 @@
 #include "CodeVisitor.h"
 
-#include "StatementBase.h"
-#include "StatementTestOp.h"
-#include "antlr_generated/ExaLangLexer.h"
+#include "../stmt/StatementBase.h"
+#include "../stmt/StatementTestOp.h"
+#include "ExaLangLexer.h"
 
 antlrcpp::Any CodeVisitor::visitFile(ExaLangParser::FileContext* ctx)
 {
