@@ -5,5 +5,5 @@
 struct StatementBase
 {
 public:
-	virtual void evaluate(ExaLangRuntime vm, ExaStack& stack);
+	virtual void evaluate(ExaLangRuntime vm, ExaStack& stack, int* codeIndex);
 };

@@ -89,6 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,6 +151,7 @@
     <ClCompile Include="CodeVisitor.cpp" />
     <ClCompile Include="ExaLangRuntime.cpp" />
     <ClCompile Include="ExaStack.cpp" />
+    <ClCompile Include="StatementTestOp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="antlr_generated/ExaLangBaseListener.h" />
@@ -164,7 +166,7 @@
     <ClInclude Include="StatementBase.h" />
     <ClInclude Include="StatementBinary.h" />
     <ClInclude Include="StatementBlank.h" />
-    <ClInclude Include="StatementSpecial.h" />
+    <ClInclude Include="StatementTestOp.h" />
     <ClInclude Include="StatementTrinary.h" />
     <ClInclude Include="StatementUnary.h" />
     <ClInclude Include="Value.h" />

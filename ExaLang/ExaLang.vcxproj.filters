@@ -13,48 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\StatementTypes">
+      <UniqueIdentifier>{8756a52b-9f7d-4b02-a3c2-83ce6cc35371}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Antlr">
+      <UniqueIdentifier>{84ed824e-b10c-44d0-8dde-4f666f487486}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Antlr">
+      <UniqueIdentifier>{d2462d74-3106-4c11-b2ca-cda360846561}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\StatementTypes">
+      <UniqueIdentifier>{a71eb775-7c52-42d6-b340-fff74a4e4507}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ExaLang.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="antlr_generated/ExaLangBaseListener.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="antlr_generated/ExaLangBaseListener.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="antlr_generated/ExaLangBaseVisitor.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="antlr_generated/ExaLangBaseVisitor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="antlr_generated/ExaLangLexer.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="antlr_generated/ExaLangLexer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="antlr_generated/ExaLangListener.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="antlr_generated/ExaLangListener.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="antlr_generated/ExaLangParser.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="antlr_generated/ExaLangParser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="antlr_generated/ExaLangVisitor.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="antlr_generated/ExaLangVisitor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CodeVisitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ExaLangRuntime.cpp">
@@ -63,26 +36,50 @@
     <ClCompile Include="ExaStack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="antlr_generated/ExaLangBaseListener.h">
+      <Filter>Header Files\Antlr</Filter>
+    </ClCompile>
+    <ClCompile Include="antlr_generated/ExaLangBaseVisitor.h">
+      <Filter>Header Files\Antlr</Filter>
+    </ClCompile>
+    <ClCompile Include="antlr_generated/ExaLangLexer.h">
+      <Filter>Header Files\Antlr</Filter>
+    </ClCompile>
+    <ClCompile Include="antlr_generated/ExaLangListener.h">
+      <Filter>Header Files\Antlr</Filter>
+    </ClCompile>
+    <ClCompile Include="antlr_generated/ExaLangParser.h">
+      <Filter>Header Files\Antlr</Filter>
+    </ClCompile>
+    <ClCompile Include="antlr_generated/ExaLangVisitor.h">
+      <Filter>Header Files\Antlr</Filter>
+    </ClCompile>
+    <ClCompile Include="antlr_generated/ExaLangBaseListener.cpp">
+      <Filter>Source Files\Antlr</Filter>
+    </ClCompile>
+    <ClCompile Include="antlr_generated/ExaLangBaseVisitor.cpp">
+      <Filter>Source Files\Antlr</Filter>
+    </ClCompile>
+    <ClCompile Include="antlr_generated/ExaLangLexer.cpp">
+      <Filter>Source Files\Antlr</Filter>
+    </ClCompile>
+    <ClCompile Include="antlr_generated/ExaLangListener.cpp">
+      <Filter>Source Files\Antlr</Filter>
+    </ClCompile>
+    <ClCompile Include="antlr_generated/ExaLangParser.cpp">
+      <Filter>Source Files\Antlr</Filter>
+    </ClCompile>
+    <ClCompile Include="antlr_generated/ExaLangVisitor.cpp">
+      <Filter>Source Files\Antlr</Filter>
+    </ClCompile>
+    <ClCompile Include="StatementTestOp.cpp">
+      <Filter>Source Files\StatementTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="CodeVisitor.cpp">
+      <Filter>Source Files\Antlr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CodeVisitor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StatementBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StatementBlank.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StatementUnary.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StatementBinary.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StatementTrinary.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Value.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -92,8 +89,26 @@
     <ClInclude Include="ExaStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StatementSpecial.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="StatementBase.h">
+      <Filter>Header Files\StatementTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="StatementBinary.h">
+      <Filter>Header Files\StatementTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="StatementBlank.h">
+      <Filter>Header Files\StatementTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="StatementTestOp.h">
+      <Filter>Header Files\StatementTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="StatementTrinary.h">
+      <Filter>Header Files\StatementTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="StatementUnary.h">
+      <Filter>Header Files\StatementTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="CodeVisitor.h">
+      <Filter>Header Files\Antlr</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

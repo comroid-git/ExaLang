@@ -1,6 +1,7 @@
 #include "ExaLangRuntime.h"
 
 #include <thread>
+#include <filesystem>
 
 #include "ANTLRInputStream.h"
 #include "CodeVisitor.h"
@@ -8,15 +9,26 @@
 #include "antlr_generated/ExaLangLexer.h"
 #include "antlr_generated/ExaLangParser.h"
 
+using namespace std;
+
 void ExaLangRuntime::stdIoMode() const
 {
+	bool active = true;
+	auto stack = new ExaStack();
+	string code;
+	while (active)
+	{
+		cout << "exa @ " << filesystem::current_path() << ">";
+		getline(cin, code);
+		this->runCode(code.c_str());
+	}
 }
 
 void ExaLangRuntime::runFiles(char** args) const
 {
 	for (int i = 1; i < sizeof(args); i++)
 	{
-		std::thread([args, i, this]
+		thread([args, i, this]
 			{
 				this->runFile(args[i]);
 			}).detach();
@@ -25,8 +37,8 @@ void ExaLangRuntime::runFiles(char** args) const
 
 void ExaLangRuntime::runFile(char* fname) const
 {
-	std::ifstream read(fname);
-	std::stringstream buf;
+	ifstream read(fname);
+	stringstream buf;
 	buf << read.rdbuf();
 	read.close();
 	this->runCode(buf.str().c_str());
@@ -39,10 +51,9 @@ void ExaLangRuntime::runCode(const char* line) const
 	const auto tokens = new antlr4::CommonTokenStream(lexer);
 	const auto parser = new ExaLangParser(tokens);
 	const auto visitor = new CodeVisitor();
-	const std::vector<StatementBase> code = visitor->visit(parser->file()).as<std::vector<StatementBase>>();
+	vector<StatementBase>* code = &visitor->visit(parser->file()).as<vector<StatementBase>>();
 	const auto stack = new ExaStack();
-	for (auto stmt : code)
-		stmt.evaluate(*this, *stack);
+	stack->runCode(code);
 }
 
 Value ExaLangRuntime::read(ExaStack& stack, Value* value) const
@@ -51,7 +62,7 @@ Value ExaLangRuntime::read(ExaStack& stack, Value* value) const
 	switch (value->type)
 	{
 	case Register:
-		c = std::toupper(c);
+		c = toupper(c);
 		if (c == 'M')
 			return *M;
 		return *stack.read(c);
@@ -63,5 +74,5 @@ Value ExaLangRuntime::read(ExaStack& stack, Value* value) const
 	case Eof:
 		return *stack.isEof();
 	}
-	throw std::exception("invalid state");
+	throw exception("invalid state");
 }

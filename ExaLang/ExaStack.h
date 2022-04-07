@@ -1,18 +1,24 @@
 #pragma once
 
+#include <vector>
+
+#include "ExaLangRuntime.h"
 #include "Value.h"
+
+struct StatementBase;
+using namespace std;
 
 class ExaStack
 {
 public:
-	std::map<const char, Value*> regs;
+	map<char, Value*>* regs;
+	vector<StatementBase>* code;
+	int codeIndex;
 
-	explicit ExaStack(): regs(std::map<const char, Value*>())
-	{
-	}
+	void runCode(ExaLangRuntime, vector<StatementBase>*);
 
-	Value* read(const char);
-	void write(const char, Value*);
+	Value* read(char);
+	void write(char, Value*);
 	Value* isEof();
 };
 

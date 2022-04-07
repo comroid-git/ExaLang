@@ -1,16 +1,25 @@
 #include "ExaStack.h"
 
-Value* ExaStack::read(const char c)
+#include "StatementBase.h"
+
+void ExaStack::runCode(ExaLangRuntime vm, vector<StatementBase>* code)
 {
-	return regs.at(std::toupper(c));
+	this->code = code;
+	for (codeIndex = 0; codeIndex < code->size(); codeIndex++)
+		code->at(codeIndex).evaluate(vm, *this, &codeIndex);
 }
 
-void ExaStack::write(const char c, Value* v)
+Value* ExaStack::read(const char c)
 {
-	regs.insert(std::pair<const char, Value*>(c, v));
+	return regs->at(toupper(c));
+}
+
+void ExaStack::write(char c, Value* v)
+{
+	regs->insert(pair<char, Value*>(c, v));
 }
 
 Value* ExaStack::isEof(	)
 {
-	return const_cast<Value*>(regs.at('f')->value == nullptr ? Value::Zero : Value::One);
+	return const_cast<Value*>(regs->at('f')->value == nullptr ? Value::Zero : Value::One);
 }
