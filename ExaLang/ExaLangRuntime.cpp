@@ -10,6 +10,7 @@
 #include "antlr_generated/ExaLangParser.h"
 
 using namespace std;
+using namespace std::chrono;
 
 void ExaLangRuntime::stdIoMode() const
 {
@@ -27,7 +28,10 @@ void ExaLangRuntime::stdIoMode() const
 		auto parser = makeParser(code.c_str());
 		auto binary = CodeVisitor().visit(parser.file()).as<vector<StatementBase>*>();
 
+		auto start = system_clock::now().time_since_epoch();
 		stack->runCode(this, binary);
+		auto end = system_clock::now().time_since_epoch();
+		cout << "[" << (duration_cast<microseconds>(end).count() - duration_cast<microseconds>(start).count()) / 1000.0 << "ms]" << endl;
 	}
 }
 

@@ -2,7 +2,7 @@
 
 #include "StatementBase.h"
 
-void ExaStack::runCode(ExaLangRuntime vm, vector<StatementBase>* code)
+void ExaStack::runCode(const ExaLangRuntime* vm, vector<StatementBase>* code)
 {
 	this->code = code;
 	for (codeIndex = 0; codeIndex < code->size(); codeIndex++)

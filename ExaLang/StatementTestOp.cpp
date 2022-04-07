@@ -1,9 +1,9 @@
 ﻿#include "StatementTestOp.h"
 
-void StatementTestOp::evaluate(ExaLangRuntime vm, ExaStack& stack, int* codeIndex)
+void StatementTestOp::evaluate(ExaLangRuntime* vm, ExaStack& stack, int* codeIndex)
 {
-	auto left = vm.read(stack, this->left);
-	auto right = vm.read(stack, this->right);
+	auto left = vm->read(stack, this->left);
+	auto right = vm->read(stack, this->right);
 	bool result = false;
 
 	switch (op)
