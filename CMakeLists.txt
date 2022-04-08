@@ -3,7 +3,6 @@ project(ExaLang)
 
 cmake_policy(SET CMP0114 OLD)
 
-set(CMAKE_CXX_STANDARD 20)
 set(ANTLR_VERSION 4.9.3)
 set(ANTLR_EXECUTABLE $ENV{antlr_executable})
 set(Java_JAVA_EXECUTABLE $ENV{JRE_HOME}/bin/java)
