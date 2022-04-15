@@ -4,19 +4,18 @@ grammar ExaLang;
 file: (stmt LF)*;
 
 stmt
-    : stmtBlank
-    | stmtUnary var
-    | stmtBinary var var
-    | stmtTrinary var var var
-    | stmtTest
+    : stmtControl               #vStmtControl
+    | stmtUnary var             #vStmtUnary
+    | stmtBinary var var        #vStmtBinary
+    | stmtTrinary var var var   #vStmtTrinary
+    | stmtTest                  #vStmtTest
     ;
 
-stmtBlank
+stmtControl
     : HALT
     | KILL
     | MODE
     | MAKE
-    | DROP
     | WIPE
     | NOOP
     ;
@@ -25,6 +24,7 @@ stmtUnary
     | JUMP
     | TJMP
     | FJMP
+    | DROP
     | REPL
     | LINK
     | HOST
@@ -46,13 +46,13 @@ stmtTrinary
     | MODI
     ;
 stmtTest
-    : TEST var COMP_OP var  #testCompare
-    | TEST MRD              #testMrd
-    | TEST F_END            #testEof
+    : TEST var COMP_OP var  #stmtTestCompare
+    | TEST MRD              #stmtTestMrd
+    | TEST F_END            #stmtTestEof
     ;
 
 var
-    : LETTER    #varReg
+    : ID        #varReg
     | NUMLIT    #varNum
     | STRLIT    #varStr
     ;
@@ -112,7 +112,7 @@ GREATER: '>';
 MRD: 'mrd';
 F_END: 'eof';
 ID: LETTER (DIGIT | LETTER)*;
-NUMLIT: MINUS? DIGIT+ (DOT DIGIT+)?;
+NUMLIT: MINUS? DIGIT+;
 STRLIT: QUOTE (ESCAPE_QUOTE | (~[\r\n"]))*? (QUOTE);
 DIGIT: [0-9];
 LETTER: [a-zA-Z_$£#];
