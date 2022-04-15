@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+        <Company>comroid</Company>
+        <Product>exa</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ExaLang\ExaLang.csproj" />
+    </ItemGroup>
+
+</Project>
