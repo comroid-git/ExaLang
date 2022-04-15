@@ -8,7 +8,7 @@ stmt
     | stmtUnary var
     | stmtBinary var var
     | stmtTrinary var var var
-    | stmtSpecial
+    | stmtTest
     ;
 
 stmtBlank
@@ -45,7 +45,7 @@ stmtTrinary
     | DIVI
     | MODI
     ;
-stmtSpecial
+stmtTest
     : TEST var COMP_OP var  #testCompare
     | TEST MRD              #testMrd
     | TEST F_END            #testEof
