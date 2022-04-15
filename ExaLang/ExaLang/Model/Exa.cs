@@ -1,4 +1,6 @@
-﻿using ExaLang.Code;
+﻿using System.Diagnostics;
+using System.Globalization;
+using ExaLang.Code;
 
 namespace ExaLang.Model;
 
@@ -14,12 +16,18 @@ public sealed class Exa
     }
 
     public bool Active { get; set; } = true;
+    public DirectoryInfo Directory { get; set; }
 
-    public Value? Execute(ExaRuntime vm)
+    public void Write(FileInfo exaFile)
     {
-        Value? yield = null;
-        for (CodeIndex = 0; CodeIndex < CodeBase.Code.Count; CodeIndex++)
-            CodeBase.Code[CodeIndex].Evaluate(vm, this);
-        return yield;
+        using (var writer = new StreamWriter(exaFile.FullName, false))
+        using (var stream = new CsvWriter(writer, CultureInfo.InvariantCulture))
+        {
+        }
+    }
+
+    public void Load(FileInfo exaFile)
+    {
+        throw new NotImplementedException();
     }
 }

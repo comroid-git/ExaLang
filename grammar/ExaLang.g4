@@ -14,6 +14,7 @@ stmt
 stmtControl
     : HALT
     | KILL
+    | REPL
     | MODE
     | MAKE
     | WIPE
