@@ -1,7 +1,7 @@
 #pragma once
 #include "AbstractVisitor.h"
 
-class CodeVisitor : public ExaLangParserBaseVisitor
+class CodeVisitor : public AbstractVisitor
 {
 public:
 	antlrcpp::Any visitFile(ExaLangParser::FileContext* ctx) override;

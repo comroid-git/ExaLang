@@ -45,6 +45,9 @@ include_directories(${ANTLR_ExaLangParser_OUTPUT_DIR})
 
 # add generated grammar to demo binary target
 add_executable(ExaLang
+        ${ANTLR_ExaLangLexer_CXX_OUTPUTS}
+        ${ANTLR_ExaLangParser_CXX_OUTPUTS}
+
         src/ExaLang.cpp
         src/ExaLangRuntime.h src/ExaLangRuntime.cpp
         src/ExaStack.h src/ExaStack.cpp
