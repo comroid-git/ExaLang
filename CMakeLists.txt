@@ -34,8 +34,8 @@ set(ANTLR_EXECUTABLE /dev/antlr/antlr-4.11.1-complete.jar)
 find_package(ANTLR REQUIRED)
 
 # Call macro to add lexer and grammar to your build dependencies.
-antlr_target(ExaLangLexer ExaLangLexer.g4 LEXER)
-antlr_target(ExaLangParser ExaLangParser.g4 PARSER VISITOR
+antlr_target(ExaLangLexer grammar/ExaLangLexer.g4 LEXER)
+antlr_target(ExaLangParser grammar/ExaLangParser.g4 PARSER VISITOR
         DEPENDS_ANTLR ExaLangLexer
         COMPILE_FLAGS -lib ${ANTLR_ExaLangLexer_OUTPUT_DIR})
 
@@ -45,6 +45,8 @@ include_directories(${ANTLR_ExaLangParser_OUTPUT_DIR})
 
 # add generated grammar to demo binary target
 add_executable(ExaLang
+        src/main.cpp
+
         ${ANTLR_ExaLangLexer_CXX_OUTPUTS}
         ${ANTLR_ExaLangParser_CXX_OUTPUTS}
 
@@ -53,10 +55,11 @@ add_executable(ExaLang
         src/ExaStack.h src/ExaStack.cpp
         src/Value.h src/Value.cpp
 
+        src/stmt/StatementBase.h
+        src/stmt/StatementTestOp.h src/stmt/StatementTestOp.cpp
+
         src/antlr/AbstractVisitor.h
         src/antlr/CodeVisitor.h src/antlr/CodeVisitor.cpp
-
-        src/stmt/StatementBase.h
-        src/stmt/StatementTestOp.h src/stmt/StatementTestOp.cpp)
+)
 # add generated grammar to demo binary target
 target_link_libraries(ExaLang antlr4_static)
