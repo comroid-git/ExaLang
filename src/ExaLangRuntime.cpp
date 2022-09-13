@@ -26,7 +26,7 @@ void ExaLangRuntime::stdIoMode() const
 			active = false;
 
 		auto parser = makeParser(code.c_str());
-		auto binary = CodeVisitor().visit(parser.file()).as<vector<StatementBase>*>();
+		auto binary = any_cast<vector<StatementBase>*>(CodeVisitor().visit(parser.file()));
 
 		auto start = system_clock::now().time_since_epoch();
 		stack->runCode(this, binary);
@@ -67,14 +67,14 @@ void ExaLangRuntime::runCode(const char* line) const
 {
 	auto parser = makeParser(line);
 	auto visitor = new CodeVisitor();
-	vector<StatementBase>* code = &visitor->visit(parser.file()).as<vector<StatementBase>>();
+    auto code = any_cast<vector<StatementBase>>(visitor->visit(parser.file()));
 	const auto stack = new ExaStack();
-	stack->runCode(this, code);
+	stack->runCode(this, &code);
 }
 
 Value ExaLangRuntime::read(ExaStack& stack, Value* value) const
 {
-	char c = *static_cast<const char*>(value->value);
+	auto c = *any_cast<char>(value->value);
 	switch (value->type)
 	{
 	case Register:
@@ -90,5 +90,5 @@ Value ExaLangRuntime::read(ExaStack& stack, Value* value) const
 	case Eof:
 		return *stack.isEof();
 	}
-	throw exception("invalid state");
+	throw "invalid state";
 }

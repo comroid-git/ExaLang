@@ -1,2 +1,2 @@
 ﻿#include "Value.h"
-Value::cache = new std::map<std::string, Value>();
+const std::map<std::string, Value*>* Value::cache = new std::map<std::string, Value*>();

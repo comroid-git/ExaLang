@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <map>
 #include <string>
+#include <any>
 
 enum ValueType
 {
@@ -17,15 +18,15 @@ struct Value
 	static const Value* Zero;
 	static const Value* One;
 	const ValueType type;
-	const void* value;
+	const std::any* value;
 
-	Value(ValueType type, const void* value)
+	Value(ValueType type, const std::any* value)
 		: type(type),
 		  value(value)
 	{
 	}
 
-	static Value* create(ValueType type, const void* value)
+	static Value* create(ValueType type, const std::any* value)
 	{
 		return new Value(type, value);
 	}

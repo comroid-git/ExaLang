@@ -3,6 +3,8 @@
 #include "ExaStack.h"
 #include "Value.h"
 
+class ExaStack;
+
 class ExaLangRuntime
 {
 public:

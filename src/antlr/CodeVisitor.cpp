@@ -9,8 +9,8 @@ antlrcpp::Any CodeVisitor::visitFile(ExaLangParser::FileContext* ctx)
 	std::vector<StatementBase> yield;
 	for (auto stmt : ctx->stmt())
 	{
-		auto out = this->visitStmt(stmt);
-		yield.push_back(out.as<StatementBase>());
+		any out = this->visitStmt(stmt);
+		yield.push_back(any_cast<StatementBase>(out));
 	}
 	return yield;
 }
@@ -28,7 +28,7 @@ antlrcpp::Any CodeVisitor::visitStmtBlank(ExaLangParser::StmtBlankContext* ctx)
 	case ExaLangLexer::NOOP: break;
 	default: break;
 	}
-	throw std::exception(std::string("Invalid context: " + ctx->getText()).c_str());
+	throw std::string("Invalid context: " + ctx->getText());
 }
 
 antlrcpp::Any CodeVisitor::visitStmtUnary(ExaLangParser::StmtUnaryContext* ctx)
@@ -48,7 +48,7 @@ antlrcpp::Any CodeVisitor::visitStmtUnary(ExaLangParser::StmtUnaryContext* ctx)
 	case ExaLangLexer::SEEK: break;
 	default: break;
 	}
-	throw std::exception(std::string("Invalid context: " + ctx->getText()).c_str());
+	throw std::string("Invalid context: " + ctx->getText());
 }
 
 antlrcpp::Any CodeVisitor::visitStmtBinary(ExaLangParser::StmtBinaryContext* ctx)
@@ -58,7 +58,7 @@ antlrcpp::Any CodeVisitor::visitStmtBinary(ExaLangParser::StmtBinaryContext* ctx
 	case ExaLangLexer::COPY: break;
 	default: break;
 	}
-	throw std::exception(std::string("Invalid context: " + ctx->getText()).c_str());
+	throw std::string("Invalid context: " + ctx->getText());
 }
 
 antlrcpp::Any CodeVisitor::visitStmtTrinary(ExaLangParser::StmtTrinaryContext* ctx)
@@ -74,13 +74,13 @@ antlrcpp::Any CodeVisitor::visitStmtTrinary(ExaLangParser::StmtTrinaryContext* c
 	case ExaLangLexer::MODI: break;
 	default: break;
 	}
-	throw std::exception(std::string("Invalid context: " + ctx->getText()).c_str());
+	throw std::string("Invalid context: " + ctx->getText());
 }
 
 antlrcpp::Any CodeVisitor::visitTestCompare(ExaLangParser::TestCompareContext* ctx)
 {
-	Value* left = visit(ctx->var(0)).as<Value*>();
-	Value* right = visit(ctx->var(1)).as<Value*>();
+	auto left = any_cast<Value*>(visit(ctx->var(0)));
+	auto right = any_cast<Value*>(visit(ctx->var(1)));
 	int op;
 	switch (ctx->COMP_OP()->getSymbol()->getType())
 	{
@@ -88,7 +88,7 @@ antlrcpp::Any CodeVisitor::visitTestCompare(ExaLangParser::TestCompareContext* c
 	case ExaLangLexer::NOTEQUALS: op = 1; break;
 	case ExaLangLexer::LESSER: op = 2; break;
 	case ExaLangLexer::GREATER: op = 3; break;
-	default: throw std::exception(std::string("Invalid operator: " + ctx->COMP_OP()->getText()).c_str());
+	default: throw std::string("Invalid operator: " + ctx->COMP_OP()->getText());
 	}
 	return StatementTestOp(left, right, op);
 }
@@ -108,14 +108,16 @@ antlrcpp::Any CodeVisitor::visitTestEof(ExaLangParser::TestEofContext* ctx)
 antlrcpp::Any CodeVisitor::visitVarReg(ExaLangParser::VarRegContext* context)
 {
 	char reg = context->start->getText()[0];
-	Value* value = Value::create(Register, &reg);
+    std::any it = reg;
+	Value* value = Value::create(Register, &it);
 	return value;
 }
 
 antlrcpp::Any CodeVisitor::visitVarNum(ExaLangParser::VarNumContext* context)
 {
 	double num = atof(context->start->getText().c_str());
-	Value* value = Value::create(LiteralNum, &num);
+    std::any it = num;
+	Value* value = Value::create(LiteralNum, &it);
 	return value;
 }
 
@@ -123,6 +125,7 @@ antlrcpp::Any CodeVisitor::visitVarStr(ExaLangParser::VarStrContext* context)
 {
 	std::string str = context->start->getText();
 	str = str.substr(1, str.length() - 2);
-	Value* value = Value::create(LiteralStr, &str);
+    std::any it = str;
+	Value* value = Value::create(LiteralStr, &it);
 	return value;
 }

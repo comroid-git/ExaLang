@@ -8,6 +8,8 @@
 struct StatementBase;
 using namespace std;
 
+class ExaLangRuntime; // need to denote type due to circular dependency
+
 class ExaStack
 {
 public:
